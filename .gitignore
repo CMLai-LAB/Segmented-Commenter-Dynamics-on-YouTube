@@ -1,0 +1,6 @@
+# Keep data and local manuscript files out of the code repository.
+data/
+*.zip
+*.pdf
+__pycache__/
+*.py[cod]
