@@ -30,4 +30,15 @@ The Google Drive package contains the aggregate outputs required to inspect and 
 
 ## License and privacy
 
-Choose and add a repository license before public release. Do not add comment text, commenter identifiers, or user-level linkage files to this repository.
+Unless otherwise noted, the code in this repository is released under
+the MIT License; see `LICENSE`.
+
+The non-identifying aggregate data available through Google Drive are
+released under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0). Reuse must acknowledge this repository and the
+associated manuscript.
+
+The public release contains derived aggregate outputs only. It does not
+include, license, or convey rights to raw YouTube comment text, public
+commenter identifiers, commenter-level linkage data, or other
+platform-derived personal data.
