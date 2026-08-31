@@ -24,6 +24,29 @@ The dictionary-construction audit used CKIP Transformers for a sequential word-s
 
 The CKIP model identifiers and their access date are documented in the manuscript. The original environment used for model inference was not preserved as a version-locked environment; the repository therefore does not claim unverified package versions or immutable model revisions.
 
+## Analysis workflow
+
+The scripts correspond to the following production sequence. Running the
+complete workflow from the first step requires the non-deposited raw platform
+snapshots; the Google Drive package provides the resulting non-identifying
+aggregate outputs.
+
+1. `filter_by_keywords.py` applies the three recall-related retrieval terms.
+2. `analyze_topic_by_media_type.py` and
+   `analyze_topic_stat_tests_by_media_type.py` produce topic summaries and
+   statistical-test outputs in `topic/`.
+3. `analyze_emotion_by_media_type.py` and
+   `analyze_emotion_stat_tests_by_media_type.py` produce emotion summaries and
+   statistical-test outputs in `emotion/`.
+4. `analyze_monthly_user_mobility.py` and
+   `analyze_quarterly_user_mobility.py` produce commenter-mobility summaries
+   in `mobility/user_mobility_by_media_type/`.
+5. `bootstrap_user_mobility_ci.py` produces the period-resampling interval
+   summaries in `mobility/user_mobility_bootstrap_ci/`.
+6. The `plot_*.py` scripts generate the manuscript figures from these analysis
+   outputs. `validate_emotion_model_on_samples.py` produces the emotion
+   agreement summaries reported in `validation/`.
+
 ## Reproduction scope
 
 The Google Drive package contains the aggregate outputs required to inspect and reproduce the reported descriptive summaries, statistical-test outputs, bootstrap intervals, and supplementary model terms. Platform data may change after collection, so independently recollected raw snapshots need not match the archived aggregates exactly.

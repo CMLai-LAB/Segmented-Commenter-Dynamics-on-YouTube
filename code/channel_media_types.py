@@ -18,15 +18,14 @@ TRADITIONAL_MEDIA_CHANNELS = {
 }
 
 EMERGING_MEDIA_CHANNELS = {
+    # Final 21-channel analytical sample (10 emerging-media channels).
     "風傳媒 The Storm Media",
     "CNEWS匯流新聞網",
     "ETtoday新聞雲",
     "NOWNEWS",
     "鏡週刊",
-    "鏡新聞",
     "品觀點",
     "Yahoo風向",
-    "Yahoo TV 一起看",
     "卡提諾狂新聞",
     "老天鵝娛樂",
     "CTWANT",
@@ -55,10 +54,8 @@ CHANNEL_DISPLAY_LABELS = {
     "ETtoday新聞雲": "ETtoday News",
     "NOWNEWS": "NOW News",
     "鏡週刊": "Mirror Weekly",
-    "鏡新聞": "Mirror News",
     "品觀點": "Pin View Media",
     "Yahoo風向": "Yahoo Trends",
-    "Yahoo TV 一起看": "Yahoo TV",
     "卡提諾狂新聞": "Crazy News",
     "老天鵝娛樂": "OMGooseTW",
     "CTWANT": "CTWANT",
