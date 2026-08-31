@@ -1,4 +1,4 @@
-# Segmented Audience Dynamics on YouTube: Analysis Code
+# Segmented Commenter Dynamics on YouTube: Analysis Code
 
 This repository contains the analysis and figure-generation code for the manuscript, "Segmented Audience Dynamics on YouTube: Topic, Emotion, and Commenter Mobility Across Traditional and Emerging Media."
 
