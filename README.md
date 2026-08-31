@@ -31,7 +31,7 @@ The Google Drive package contains the aggregate outputs required to inspect and 
 ## License and privacy
 
 Unless otherwise noted, the code in this repository is released under
-the MIT License; see `LICENSE`.
+the [MIT License](LICENSE).
 
 The non-identifying aggregate data available through Google Drive are
 released under the Creative Commons Attribution 4.0 International
