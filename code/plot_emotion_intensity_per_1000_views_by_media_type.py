@@ -157,7 +157,7 @@ def main() -> None:
         )
         for media_type in MEDIA_TYPE_ORDER
     ]
-    fig.suptitle("Emotion Engagement Intensity by Media Type", fontsize=18, fontweight="bold", y=0.98)
+    fig.suptitle("Emotion Commenting Intensity by Media Type", fontsize=18, fontweight="bold", y=0.98)
     fig.legend(
         handles=handles,
         loc="lower center",

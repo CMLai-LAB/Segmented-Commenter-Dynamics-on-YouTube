@@ -1,22 +1,33 @@
-# Segmented Audience Dynamics on YouTube: Analysis Code
+# Segmented Commenter Dynamics on YouTube: Analysis Code
 
-This repository contains the analysis and figure-generation code for the manuscript, "Segmented Audience Dynamics on YouTube: Topic, Emotion, and Commenter Mobility Across Traditional and Emerging Media."
+This repository contains the analysis and figure-generation code for the manuscript, "Segmented Commenter Dynamics on YouTube: Topic, Emotion, and Mobility Across Traditional and Emerging Media."
 
 ## Repository contents
 
 - `code/`: scripts for keyword retrieval, topic and emotion summaries, statistical tests, mobility analysis, bootstrap intervals, emotion-agreement summaries, and final figures.
-- `requirements.txt`: Python packages used by the included scripts.
+- `requirements.txt`: Python packages required by the included scripts.
 
 ## Data access
 
-Non-identifying aggregate data supporting the reported tables, figures, and supplementary model summaries are available from Google Drive: **[INSERT GOOGLE DRIVE URL]**.
+Non-identifying aggregate data supporting the reported tables, figures, and supplementary model summaries are available from [Google Drive](https://drive.google.com/file/d/1-Dp1QFtfk97BCR3n3nQwPRiFbm78EpDy/view?usp=sharing).
 
 The data package excludes raw comment text, public author-channel identifiers, commenter-level linkage files, raw validation records, and user-level network nodes or edges. Some scripts document the full workflow and therefore require access to the non-deposited raw platform snapshots to be run from the first collection step.
+
+## Software and model details
+
+The released analysis and plotting scripts were checked with Python 3.12, NumPy 2.3.3, and Matplotlib 3.10.7. The emotion-validation script additionally requires PyTorch and Hugging Face Transformers; it uses the model identifier `Johnson8187/Chinese-Emotion` and the default model revision resolved by Hugging Face at execution time.
+
+The dictionary-construction audit used CKIP Transformers for a sequential word-segmentation and part-of-speech-tagging workflow:
+
+- Word segmentation: `ckiplab/bert-base-chinese-ws`
+- Part-of-speech tagging: `ckiplab/bert-base-chinese-pos`
+
+The CKIP model identifiers and their access date are documented in the manuscript. The original environment used for model inference was not preserved as a version-locked environment; the repository therefore does not claim unverified package versions or immutable model revisions.
 
 ## Reproduction scope
 
 The Google Drive package contains the aggregate outputs required to inspect and reproduce the reported descriptive summaries, statistical-test outputs, bootstrap intervals, and supplementary model terms. Platform data may change after collection, so independently recollected raw snapshots need not match the archived aggregates exactly.
 
-## Before public release
+## License and privacy
 
-Replace the Google Drive placeholder above with a view/download link, choose an appropriate license, and verify that no newly added file contains comment text or commenter identifiers.
+Choose and add a repository license before public release. Do not add comment text, commenter identifiers, or user-level linkage files to this repository.
