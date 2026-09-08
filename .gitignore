@@ -1,5 +1,7 @@
 # Keep data and local manuscript files out of the code repository.
 data/
+google_drive_data/
+reproduced/
 *.zip
 *.pdf
 __pycache__/

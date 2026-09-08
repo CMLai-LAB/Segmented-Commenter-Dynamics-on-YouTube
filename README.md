@@ -26,6 +26,28 @@ The CKIP model identifiers and their access date are documented in the manuscrip
 
 ## Analysis workflow
 
+### Rebuild the ten Results figures from the released data
+
+Extract `Youtube_recall_aggregate_data.zip` into this repository root so that
+`google_drive_data/` sits alongside `code/`. With NumPy and Matplotlib installed,
+run:
+
+```bash
+python3 code/rebuild_main_figures.py --data-dir google_drive_data --output-root reproduced
+```
+
+The final PNGs are written to `reproduced/figures/`, with matching selected
+copies and plotting metadata under `reproduced/`. This command uses only the
+released aggregate CSVs. It does not rerun raw-comment analysis, emotion
+inference, or bootstrap estimation.
+
+The release includes the dynamic-tier mobility rates, grouped transition
+counts, and supplementary model terms in `google_drive_data/mobility/dynamic_tier/`.
+The data-package README documents analysis populations, pooled Jaccard
+estimation, and the model-specific BH correction families for Table S4.
+
+### Full analysis workflow
+
 The scripts correspond to the following production sequence. Running the
 complete workflow from the first step requires the non-deposited raw platform
 snapshots; the Google Drive package provides the resulting non-identifying
@@ -36,8 +58,9 @@ aggregate outputs.
    `analyze_topic_stat_tests_by_media_type.py` produce topic summaries and
    statistical-test outputs in their respective analysis output directories.
 3. `analyze_emotion_by_media_type.py` and
-   `analyze_emotion_stat_tests_by_media_type.py` produce emotion summaries and
-   statistical-test outputs in their respective analysis output directories.
+   `analyze_emotion_media_type_by_tier_chi_square.py` produce the final emotion
+   summaries and overall/tier-specific statistical tests. The older
+   `analyze_emotion_stat_tests_by_media_type.py` script is also retained.
 4. `analyze_monthly_user_mobility.py` and
    `analyze_quarterly_user_mobility.py` produce commenter-mobility summaries.
 5. `bootstrap_user_mobility_ci.py` produces the period-resampling interval
@@ -45,6 +68,13 @@ aggregate outputs.
 6. The `plot_*.py` scripts generate the manuscript figures from these analysis
    outputs. `validate_emotion_model_on_samples.py` produces the emotion
    agreement summaries reported in `validation/`.
+
+`analyze_topic_trends_by_media_type.py` and
+`analyze_channel_level_by_media_type.py` generate the quarterly and channel
+summaries. `strengthen_core_analyses.py` implements dynamic participation tiers,
+the supplementary mobility models, and additional robustness analyses. Its full
+entry point requires the non-deposited raw inputs; the figure rebuild command
+uses only its plotting function and the released dynamic-tier rates.
 
 ## Reproduction scope
 

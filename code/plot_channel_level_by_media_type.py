@@ -35,7 +35,7 @@ MEDIA_TYPE_COLORS = {
 }
 MEDIA_TYPE_LABELS = {
     "traditional": "Traditional",
-    "emerging": "Digital / emerging",
+    "emerging": "Emerging",
 }
 
 TOPIC_LABELS_EN = {

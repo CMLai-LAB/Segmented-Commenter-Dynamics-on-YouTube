@@ -13,6 +13,7 @@ from pathlib import Path
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
 
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
 
 
@@ -149,7 +150,16 @@ def draw_panel(
     show_metrics: bool,
 ) -> dict:
     matrix = matrix_from_pair(pair_data)
-    image = ax.imshow(matrix, cmap=MATRIX_CMAP, vmin=0.0, vmax=1.0, aspect="equal")
+    # The adjacent-period union cannot contain an inactive-to-inactive user.
+    inactive_index = STATE_ORDER.index("inactive")
+    mask = np.zeros((len(STATE_ORDER), len(STATE_ORDER)), dtype=bool)
+    mask[inactive_index, inactive_index] = True
+    plot_matrix = np.ma.array(matrix, mask=mask)
+    cmap = MATRIX_CMAP.copy()
+    cmap.set_bad("#E5E7EB")
+    image = ax.imshow(plot_matrix, cmap=cmap, vmin=0.0, vmax=1.0, aspect="equal")
+    ax.text(inactive_index, inactive_index, "N/A", ha="center", va="center",
+            fontsize=8.1, color="#6B7280")
 
     ax.set_title(
         f"{pair_data['from_quarter']} -> {pair_data['to_quarter']}",
@@ -172,6 +182,8 @@ def draw_panel(
     if annotate:
         for row_idx, source in enumerate(STATE_ORDER):
             for col_idx, target in enumerate(STATE_ORDER):
+                if source == target == "inactive":
+                    continue
                 value = matrix[row_idx][col_idx]
                 count = pair_data["counts"].get((source, target), 0)
                 if value < annotate_threshold and count > 0 and source != target:
@@ -271,7 +283,7 @@ def draw_matrix_panels(
         "annotate_threshold": annotate_threshold,
         "show_metrics": show_metrics,
         "states": STATE_LABELS,
-        "note": "Each heatmap is row-normalized. Rows indicate media-type participation state in the previous quarter; columns indicate the state in the next quarter.",
+        "note": "Each heatmap is row-normalized within the cohort with at least two in-corpus comments over the full observation window. Rows indicate the previous-quarter state; columns indicate the next-quarter state. The structurally impossible inactive-to-inactive cell is masked and marked N/A.",
         "panels": summaries,
     }
     output_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
